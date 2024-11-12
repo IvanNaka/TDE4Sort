@@ -24,19 +24,19 @@ public class AlgoritmosOrdenacao {
         }
     }
 
-    public static void quickSort(int[] array, int low, int high) {
-        if (low < high) {
-            int pi = partition(array, low, high);
-            quickSort(array, low, pi - 1);
-            quickSort(array, pi + 1, high);
+    public static void quickSort(int[] array, int menor, int maior) {
+        if (menor < maior) {
+            int pi = particao(array, menor, maior);
+            quickSort(array, menor, pi - 1);
+            quickSort(array, pi + 1, maior);
         }
     }
 
-    private static int partition(int[] array, int low, int high) {
-        int pivot = array[high];
-        int i = (low - 1);
-        for (int j = low; j < high; j++) {
-            if (array[j] < pivot) {
+    private static int particao(int[] array, int menor, int maior) {
+        int pivo = array[maior];
+        int i = (menor - 1);
+        for (int j = menor; j < maior; j++) {
+            if (array[j] < pivo) {
                 i++;
                 int temp = array[i];
                 array[i] = array[j];
@@ -44,8 +44,8 @@ public class AlgoritmosOrdenacao {
             }
         }
         int temp = array[i + 1];
-        array[i + 1] = array[high];
-        array[high] = temp;
+        array[i + 1] = array[maior];
+        array[maior] = temp;
         return i + 1;
     }
 }
